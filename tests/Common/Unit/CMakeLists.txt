@@ -1,6 +1,6 @@
 include("${PROJECT_CONFIG_PATH}/Lib/config.cmake")
 
-set(LIB_TESTS_UNIT_TARGET_NAME LIBUnitTests)
+set(LIB_TESTS_UNIT_TARGET_NAME COMMONUnitTests)
 
 set(LIB_TESTS_UNIT_INCLUDE_DIR "${${PROJECT_MAIN_NAME}_SOURCE_DIR}/tests/${LIB_TARGET_NAME}/Unit")
 set(LIB_TESTS_UNIT_SRC_DIR "${${PROJECT_MAIN_NAME}_SOURCE_DIR}/tests/${LIB_TARGET_NAME}/Unit")
@@ -10,9 +10,13 @@ set(LIB_TESTS_UNIT_SRC_PREFIX "${LIB_TESTS_UNIT_SRC_DIR}/")
 
 set(
 	LIB_TESTS_UNIT_HEADERS_LIST
+    "Utils/GeneralUtilsTest.h"
+	"Utils/ThreadUtils/AsyncTaskExecutorTest.h"
 )
 set(
 	LIB_TESTS_UNIT_SRC_LIST
+	"Utils/GeneralUtilsTest.cpp"
+	"Utils/ThreadUtils/AsyncTaskExecutorTest.cpp"
 	"main.cpp"
 )
 
@@ -26,10 +30,7 @@ target_link_libraries(
 	${LIB_TESTS_UNIT_TARGET_NAME}
 	PRIVATE
 		CONAN_PKG::gtest
-		CONAN_PKG::stduuid
-		CONAN_PKG::spdlog
-		CPS::lib
-		CPS::vendor_xxhash
+		CT::common_utils
 )
 
 set_compiler_options(${LIB_TESTS_UNIT_TARGET_NAME})

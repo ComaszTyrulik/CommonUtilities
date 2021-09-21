@@ -13,17 +13,6 @@ targets:
       base_dir: src/Lib
       cmake_variable_file: src/Lib/CMakeLists.txt
       cmake_variable_name: LIB_SRC_LIST
-  app:
-    tests: false
-    namespace: cps
-    headers:
-      base_dir: include/App
-      cmake_variable_file: src/App/CMakeLists.txt
-      cmake_variable_name: APP_HEADERS_LIST
-    sources:
-      base_dir: src/App
-      cmake_variable_file: src/App/CMakeLists.txt
-      cmake_variable_name: APP_SRC_LIST
   lib_units:
     tests: true
     namespace: cps::tests::unit

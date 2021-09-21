@@ -15,10 +15,10 @@ project(
 	LANGUAGES CXX
 )
 
-include("${CMAKE_CURRENT_SOURCE_DIR}/conan/build/conanbuildinfo_multi.cmake")
-conan_basic_setup(TARGETS) # Configure Conan, but do not let it override output directories
-
 if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
+    include("${CMAKE_CURRENT_SOURCE_DIR}/conan/build/conanbuildinfo_multi.cmake")
+    conan_basic_setup(TARGETS) # Configure Conan, but do not let it override output directories
+
 	set(CMAKE_INSTALL_PREFIX "${${PROJECT_MAIN_NAME}_SOURCE_DIR}")
 	set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin")
 	set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
@@ -33,6 +33,10 @@ if(CMAKE_PROJECT_NAME STREQUAL PROJECT_NAME)
 	option(BUILD_UNIT_TESTS "Build unit tests" ON)
 	option(BUILD_INTEGRATION_TESTS "Build integration tests" ON)
 	option(GROUP_FILES_SEPARATE "Group source and header files into different sub-categories inside the IDE" OFF)
+endif()
+
+if(NOT DEFINED CT_COMMON_NAMESPACE)
+    set(CT_COMMON_NAMESPACE ct)
 endif()
 
 add_subdirectory(vendor) # Vendors' code
