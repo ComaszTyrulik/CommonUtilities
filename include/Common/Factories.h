@@ -18,7 +18,12 @@ namespace CT_COMMON_NAMESPACE
         IUniqueFactory() = default;
         virtual ~IUniqueFactory() = default;
 
-        virtual UniquePtr<FactoryType> Create() const = 0;
+        /**
+         * @brief Creates new, unique instance of an object of type FactoryType.
+         * 
+         * @return 
+         */
+        virtual Unique<FactoryType> Create() const = 0;
     };
 
     /**
@@ -36,7 +41,12 @@ namespace CT_COMMON_NAMESPACE
         IUniqueFactoryWithParam() = default;
         virtual ~IUniqueFactoryWithParam() = default;
 
-        virtual UniquePtr<FactoryType> Create(ParamType param) const = 0;
+        /**
+         * @brief Creates new, unique instance of an object of type FactoryType using provided param.
+         * 
+         * @return 
+         */
+        virtual Unique<FactoryType> Create(ParamType param) const = 0;
     };
 
     /**
@@ -54,7 +64,12 @@ namespace CT_COMMON_NAMESPACE
         ISharedFactoryWithParam() = default;
         virtual ~ISharedFactoryWithParam() = default;
 
-        virtual SharedPtr<FactoryType> Create(ParamType param) const = 0;
+        /**
+         * @brief Creates new or returns existing, instance of an object of type FactoryType using provided param.
+         * 
+         * @return 
+         */
+        virtual Shared<FactoryType> Create(ParamType param) const = 0;
     };
 
     /**
@@ -68,9 +83,14 @@ namespace CT_COMMON_NAMESPACE
         static_assert(std::is_base_of_v<InterfaceType, ConcreteType>, "Provided ConcreteType does not inherit from InterfaceType");
 
     public:
-        std::unique_ptr<InterfaceType> Create() const override
+        /**
+         * @brief Creates new, unique instance of the ConcreteType object.
+         * 
+         * @return 
+         */
+        Unique<InterfaceType> Create() const override
         {
-            return std::make_unique<ConcreteType>();
+            return CreateUnique<ConcreteType>();
         }
     };
 } // namespace CT_COMMON_NAMESPACE

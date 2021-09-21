@@ -35,37 +35,25 @@ namespace CT_COMMON_NAMESPACE
 
     /***********************POINTERS DEFINITIONS**************************/
     template<typename T>
-    using UniquePtr = std::unique_ptr<T>;
+    using Unique = std::unique_ptr<T>;
 
     template<typename T, typename... Args>
-    [[nodiscard]] constexpr UniquePtr<T> CreateUniquePtr(Args&&... args)
+    [[nodiscard]] constexpr Unique<T> CreateUnique(Args&&... args)
     {
         return std::make_unique<T>(std::forward<Args>(args)...);
     }
 
     template<typename T>
-    using SharedPtr = std::shared_ptr<T>;
+    using Shared = std::shared_ptr<T>;
 
     template<typename T, typename... Args>
-    [[nodiscard]] constexpr SharedPtr<T> CreateSharedPtr(Args&&... args)
+    [[nodiscard]] constexpr Shared<T> CreateShared(Args&&... args)
     {
         return std::make_shared<T>(std::forward<Args>(args)...);
     }
 
     template<typename T>
-    using WeakPtr = std::weak_ptr<T>;
-    /***********************************************************************/
-
-    /*******************************DEBUG***********************************/
-    enum class MessageSeverity
-    {
-        SCE_INFO,
-        SCE_WARNING,
-        SCE_ERROR,
-        SCE_FATAL_ERROR,
-    };
-
-    using SceDebugCallback = void (*)(const char* message, MessageSeverity severity, void* customData);
+    using Weak = std::weak_ptr<T>;
     /***********************************************************************/
 
     /*******************************OTHERS**********************************/

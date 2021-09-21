@@ -16,6 +16,6 @@ namespace CT_COMMON_NAMESPACE
          * 
          * @return New, unique Id
          */
-        virtual Id Generate() const = 0;
+        [[nodiscard]] virtual Id Generate() const = 0;
     };
 } // namespace CT_COMMON_NAMESPACE
