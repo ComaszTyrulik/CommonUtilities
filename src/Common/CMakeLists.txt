@@ -3,11 +3,11 @@ include("${PROJECT_CONFIG_PATH}/Lib/config.cmake")
 set(
 	LIB_HEADERS_LIST
 	"Exceptions.h"
-    "Exceptions/FilesystemException.h"
+	"Exceptions/FilesystemException.h"
 	"Factories.h"
+	"Filesystem/Filesystem.h"
+	"Filesystem/IFilesystem.h"
 	"Filesystem/Types.h"
-    "Filesystem/IFilesystem.h"
-    "Filesystem/Filesystem.h"
 	"Helpers.h"
 	"IdGenerators/IUuIdGenerator.h"
 	"IdGenerators/UuId4Generator.h"
@@ -21,9 +21,9 @@ set(
 )
 set(
 	LIB_SRC_LIST
-    "Exceptions/FilesystemException.cpp"
-    "Filesystem/Filesystem.cpp"
-    "IdGenerators/UuId4Generator.cpp"
+	"Exceptions/FilesystemException.cpp"
+	"Filesystem/Filesystem.cpp"
+	"IdGenerators/UuId4Generator.cpp"
 	"Utils/Time.cpp"
 )
 
@@ -49,17 +49,17 @@ target_precompile_headers(
 	${LIB_TARGET_NAME}
 	PRIVATE
         <memory>
-		<string_view>
-		<filesystem>
-		<cstdint>
-		<string>
-		<map>
-		<unordered_map>
-		<chrono>
-		<map>
-		<string>
-		<vector>
-		<fmt/format.h>
+        <string_view>
+        <filesystem>
+        <cstdint>
+        <string>
+        <map>
+        <unordered_map>
+        <chrono>
+        <map>
+        <string>
+        <vector>
+        <fmt/format.h>
         <xxHash/xxhash.h>
 )
 

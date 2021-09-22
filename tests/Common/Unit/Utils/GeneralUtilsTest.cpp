@@ -17,7 +17,7 @@ namespace CT_COMMON_NAMESPACE::tests::unit
 
     TEST_F(ForEachTest, WillExecuteGivenFunctionForEveryElementFromTheGivenRange)
     {
-        int counter = 0;
+        std::size_t counter = 0;
         const auto function = [&](auto&& element) { counter++; };
 
         std::size_t expectedCount = 5;
@@ -27,10 +27,8 @@ namespace CT_COMMON_NAMESPACE::tests::unit
         ASSERT_EQ(expectedCount, counter);
     }
 
-    TEST_F(FindTest, FindIndexWillReturnNegativeOneIfNoElementMatchingGivenPredicateFound)
+    TEST_F(FindTest, FindIndexWillReturnEmptyObjectIfNoElementMatchingGivenPredicateFound)
     {
-        const int expectedIndex = -1;
-
         const Id idToFind = 0;
         std::vector<TestStruct> container(2);
         container[0].id = 1;
@@ -38,12 +36,12 @@ namespace CT_COMMON_NAMESPACE::tests::unit
         
         const auto predicate = [&](const TestStruct& element) { return element.id == idToFind; };
         auto result = FindIndex(container, predicate);
-        ASSERT_EQ(expectedIndex, result);
+        ASSERT_FALSE(result.has_value());
     }
 
     TEST_F(FindTest, FindIndexWillReturnCorrectIndexOfTheObjectIfElementMatchingGivenPredicateFound)
     {
-        const int expectedIndex = 0;
+        const std::size_t expectedIndex = 0;
 
         const Id idToFind = 1;
         std::vector<TestStruct> container(2);

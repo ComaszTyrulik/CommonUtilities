@@ -6,6 +6,9 @@ namespace CT_COMMON_NAMESPACE
     using HashSeed = XXH64_hash_t;
     using HashValue = XXH64_hash_t;
 
+    /**
+     * @brief Provides static, hashing-related functionalities.
+     */
     class Hasher final
     {
     public:

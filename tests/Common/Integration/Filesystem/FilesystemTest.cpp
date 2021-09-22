@@ -7,8 +7,7 @@ namespace CT_COMMON_NAMESPACE::tests::integration
     TEST_F(FilesystemTest, DoesDirectoryExistWillReturnTrueIfGivenPathExistsAndIsDirectory)
     {
         const std::string directoryName = "ExistingDirectory";
-        const auto directoryPath = GetFullPath(directoryName);
-        CreateDirectory(directoryName);
+        const auto directoryPath = CreateDirectory(directoryName);
 
         const Filesystem sut;
         ASSERT_TRUE(sut.DirectoryExists(directoryPath));
@@ -26,8 +25,7 @@ namespace CT_COMMON_NAMESPACE::tests::integration
     TEST_F(FilesystemTest, DoesDirectoryExistWillReturnFalseIfGivenPathExistsButIsNotDirectory)
     {
         const std::string invalidDirectoryName = "FileNotDir.txt";
-        const auto invalidDirectoryPath = GetFullPath(invalidDirectoryName);
-        CreateFile(invalidDirectoryName);
+        const auto invalidDirectoryPath = CreateFile(invalidDirectoryName);
 
         const Filesystem sut;
         ASSERT_FALSE(sut.DirectoryExists(invalidDirectoryPath));
@@ -48,17 +46,16 @@ namespace CT_COMMON_NAMESPACE::tests::integration
         ASSERT_TRUE(directoryExistanceAfter);
     }
 
-    TEST_F(FilesystemTest, CreateDirectoryWillThrowExceptionIfDirectoryAlreadyExist)
+    TEST_F(FilesystemTest, CreateDirectoryWillThrowExceptionIfDirectoryAlreadyExists)
     {
         const std::string directoryName = "ValidDirectory";
-        const auto directoryPath = GetFullPath(directoryName);
-        CreateDirectory(directoryName);
+        const auto directoryPath = CreateDirectory(directoryName);
 
         const Filesystem sut;
         ASSERT_THROW(sut.CreateDirectory(directoryPath), std::runtime_error);
     }
 
-    TEST_F(FilesystemTest, CreateDirectoryWillThrowExceptionIfGivenPathContainsNonExistentDirectories)
+    TEST_F(FilesystemTest, CreateDirectoryWillThrowExceptionIfGivenPathConsistsOfNonExistentDirectories)
     {
         const auto invalidDirectoryPath = GetFullPath("NonExistent1/NonExistent2/Dir");
 
@@ -66,11 +63,10 @@ namespace CT_COMMON_NAMESPACE::tests::integration
         ASSERT_THROW(sut.CreateDirectory(invalidDirectoryPath), std::runtime_error);
     }
 
-    TEST_F(FilesystemTest, CreateDirectoryWillThrowExceptionIfDirectoryAlreadyExistsButIsNotDirectory)
+    TEST_F(FilesystemTest, CreateDirectoryWillThrowExceptionIfFileWithGivenNameExistsUnderGivenPath)
     {
         const std::string invalidDirectoryName = "FileNotDir.txt";
-        const auto invalidDirectoryPath = GetFullPath(invalidDirectoryName);
-        CreateFile(invalidDirectoryName);
+        const auto invalidDirectoryPath = CreateFile(invalidDirectoryName);
 
         const Filesystem sut;
         ASSERT_THROW(sut.CreateDirectory(invalidDirectoryPath), std::runtime_error);
@@ -79,14 +75,13 @@ namespace CT_COMMON_NAMESPACE::tests::integration
     TEST_F(FilesystemTest, DoesFileExistWillReturnTrueIfGivenPathExistsAndIsFile)
     {
         const std::string filename = "File.txt";
-        const auto filePath = GetFullPath(filename);
-        CreateFile(filename);
+        const auto filePath = CreateFile(filename);
 
         const Filesystem sut;
         ASSERT_TRUE(sut.FileExists(filePath));
     }
 
-    TEST_F(FilesystemTest, DoesFileExistWillReturnFalseIfGivenPathDoesNotExit)
+    TEST_F(FilesystemTest, DoesFileExistWillReturnFalseIfGivenFileDoesNotExists)
     {
         const std::string filename = "File.txt";
         const auto filePath = GetFullPath(filename);
@@ -97,9 +92,8 @@ namespace CT_COMMON_NAMESPACE::tests::integration
 
     TEST_F(FilesystemTest, DoesFileExistWillReturnFalseIfGivenPathExistsButIsNotFile)
     {
-        const std::string invalidFileName = "ThisIsDirectory!";
-        const auto invalidFilePath = GetFullPath(invalidFileName);
-        CreateDirectory(invalidFileName);
+        const std::string invalidFilename = "ThisIsDirectory!";
+        const auto invalidFilePath = CreateDirectory(invalidFilename);
 
         const Filesystem sut;
         ASSERT_FALSE(sut.FileExists(invalidFilePath));
@@ -113,7 +107,7 @@ namespace CT_COMMON_NAMESPACE::tests::integration
         const bool fileExistanceBefore = fs::exists(filePath);
 
         const Filesystem sut;
-        sut.CreateFile(filePath, "");
+        sut.CreateFile(filePath);
         
         const bool fileExistanceAfter = fs::exists(filePath);
         ASSERT_FALSE(fileExistanceBefore);
@@ -123,20 +117,19 @@ namespace CT_COMMON_NAMESPACE::tests::integration
     TEST_F(FilesystemTest, CreateFileWillThrowExceptionIfFileAlreadyExists)
     {
         const std::string filename = "File.txt";
-        const auto filePath = GetFullPath(filename);
-        CreateFile(filename);
+        const auto filePath = CreateFile(filename);
 
         const Filesystem sut;
-        ASSERT_THROW(sut.CreateFile(filePath, ""), std::runtime_error);
+        ASSERT_THROW(sut.CreateFile(filePath), std::runtime_error);
     }
 
-    TEST_F(FilesystemTest, CreateFileWillThrowExceptionIfFileCouldNotBeCreated)
+    TEST_F(FilesystemTest, CreateFileWillThrowExceptionIfGivenFilePathContainsNonExistentDirectories)
     {
         const std::string filename = "Non/Existent/PathTo/File.txt";
         const auto filePath = GetFullPath(filename);
 
         const Filesystem sut;
-        ASSERT_THROW(sut.CreateFile(filePath, ""), std::runtime_error);
+        ASSERT_THROW(sut.CreateFile(filePath), std::runtime_error);
     }
 
     TEST_F(FilesystemTest, CreateFileWillCreateFileWithGivenContent)
@@ -159,10 +152,10 @@ namespace CT_COMMON_NAMESPACE::tests::integration
         const auto filePath = GetFullPath(filename);
 
         const Filesystem sut;
-        ASSERT_THROW(sut.UpdateFile(filePath, ""), std::runtime_error);
+        ASSERT_THROW(sut.UpdateFile(filePath, "New content"), std::runtime_error);
     }
 
-    TEST_F(FilesystemTest, UpdateFileWillUpdateFileContentWithGivenContent)
+    TEST_F(FilesystemTest, UpdateFileWillUpdateFileContentWithGivenNewContent)
     {
         const std::string expectedContent = "This is my content\nWith new line";
         const std::string filename = "File.txt";
@@ -213,8 +206,7 @@ namespace CT_COMMON_NAMESPACE::tests::integration
     TEST_F(FilesystemTest, DeleteFileWillRemoveFileFromDisk)
     {
         const std::string filename = "File.txt";
-        const auto filePath = GetFullPath(filename);
-        CreateFile(filename);
+        const auto filePath = CreateFile(filename);
 
         const bool fileExistanceBefore = fs::exists(filePath);
 
@@ -232,9 +224,8 @@ namespace CT_COMMON_NAMESPACE::tests::integration
         const auto emptyDirectoryPath = CreateDirectory(emptyDirectoryName);
 
         const Filesystem sut;
-        const auto actualContents = sut.ReadAllFilesInDirectory(emptyDirectoryPath);
-
-        ASSERT_TRUE(actualContents.empty());
+        const auto actualFiles = sut.ReadAllFilesInDirectory(emptyDirectoryPath);
+        ASSERT_TRUE(actualFiles.empty());
     }
 
     TEST_F(FilesystemTest, ReadAllFilesInDirectoryWillThrowExceptionIfGivenDirectoryDoesNotExist)
@@ -245,7 +236,7 @@ namespace CT_COMMON_NAMESPACE::tests::integration
         ASSERT_THROW(sut.ReadAllFilesInDirectory(nonexistentDirectoryPath), std::runtime_error);
     }
 
-    TEST_F(FilesystemTest, ReadAllFilesInDirectoryWillThrowExceptionIfGivenDirectoryPathIsAFile)
+    TEST_F(FilesystemTest, ReadAllFilesInDirectoryWillThrowExceptionIfGivenDirectoryPathIsFile)
     {
         const auto invalidDirectoryPath = CreateFile("FileNotDir.txt");
 
@@ -260,7 +251,7 @@ namespace CT_COMMON_NAMESPACE::tests::integration
         
         const std::size_t expectedFilesArrayCount = 1;
         const auto expectedFileContent = "FileContent";
-        const auto filePath = directoryName / "Filename";
+        const auto filePath = directoryName / "Filename.txt";
 
         CreateFile(filePath, expectedFileContent);
 
@@ -300,13 +291,12 @@ namespace CT_COMMON_NAMESPACE::tests::integration
 
         const std::size_t expectedFilesArrayCount = 1;
         const auto expectedFileContent = "FileContent";
-        const auto filePath = directoryName / "Filename";
+        const auto filePath = directoryName / "Filename.txt";
 
         CreateFile(filePath, expectedFileContent);
 
         const Filesystem sut;
-        std::vector<std::string> actualFiles{};
-        ASSERT_NO_THROW(actualFiles = sut.ReadAllFilesInDirectory(directoryPath));
+        const auto actualFiles = sut.ReadAllFilesInDirectory(directoryPath);
 
         ASSERT_EQ(expectedFilesArrayCount, actualFiles.size());
         ASSERT_EQ(expectedFileContent, actualFiles[0]);

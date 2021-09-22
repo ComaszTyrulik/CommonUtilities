@@ -11,13 +11,13 @@ set(LIB_TESTS_INTEGRATION_SRC_PREFIX "${LIB_TESTS_INTEGRATION_SRC_DIR}/")
 
 set(
 	LIB_TESTS_INTEGRATION_HEADERS_LIST
-    "Filesystem/FilesystemTest.h"
-    "Filesystem/FilesystemTestCase.h"
+	"Filesystem/FilesystemTest.h"
+	"Filesystem/FilesystemTestCase.h"
 )
 
 set(
 	LIB_TESTS_INTEGRATION_SRC_LIST
-    "Filesystem/FilesystemTest.cpp"
+	"Filesystem/FilesystemTest.cpp"
 	"main.cpp"
 )
 

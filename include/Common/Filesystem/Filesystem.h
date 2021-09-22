@@ -4,13 +4,16 @@
 
 namespace CT_COMMON_NAMESPACE
 {
+    /**
+     * @brief Basic IFilesystem implementation using std::filesystem.
+     */
     class Filesystem final : public IFilesystem
     {
     public:
         bool DirectoryExists(const FilesystemPath& directoryPath) const override;
         void CreateDirectory(const FilesystemPath& directoryPath) const override;
         bool FileExists(const FilesystemPath& filePath) const override;
-        void CreateFile(const FilesystemPath& filePath, std::string_view fileContent) const override;
+        void CreateFile(const FilesystemPath& filePath, std::string_view fileContent = "") const override;
         void UpdateFile(const FilesystemPath& filePath, std::string_view fileContent) const override;
         void DeleteFile(const FilesystemPath& filePath) const override;
         std::string ReadFile(const FilesystemPath& filePath) const override;

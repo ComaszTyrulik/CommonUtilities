@@ -10,7 +10,7 @@ set(LIB_TESTS_UNIT_SRC_PREFIX "${LIB_TESTS_UNIT_SRC_DIR}/")
 
 set(
 	LIB_TESTS_UNIT_HEADERS_LIST
-    "Utils/GeneralUtilsTest.h"
+	"Utils/GeneralUtilsTest.h"
 	"Utils/ThreadUtils/AsyncTaskExecutorTest.h"
 )
 set(

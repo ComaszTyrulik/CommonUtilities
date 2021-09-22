@@ -14,7 +14,7 @@ namespace CT_COMMON_NAMESPACE
         using FactoryType = TypeOfFactory;
 
     public:
-        SCE_IMPLEMENT_ADDITIONAL_CONSTRUCTORS_DELETED(IUniqueFactory);
+        CT_IMPLEMENT_ADDITIONAL_CONSTRUCTORS_DELETED(IUniqueFactory);
         IUniqueFactory() = default;
         virtual ~IUniqueFactory() = default;
 
@@ -37,7 +37,7 @@ namespace CT_COMMON_NAMESPACE
         using ParamType = TypeOfParam;
 
     public:
-        SCE_IMPLEMENT_ADDITIONAL_CONSTRUCTORS_DELETED(IUniqueFactoryWithParam);
+        CT_IMPLEMENT_ADDITIONAL_CONSTRUCTORS_DELETED(IUniqueFactoryWithParam);
         IUniqueFactoryWithParam() = default;
         virtual ~IUniqueFactoryWithParam() = default;
 
@@ -60,7 +60,7 @@ namespace CT_COMMON_NAMESPACE
         using ParamType = TypeOfParam;
 
     public:
-        SCE_IMPLEMENT_ADDITIONAL_CONSTRUCTORS_DELETED(ISharedFactoryWithParam);
+        CT_IMPLEMENT_ADDITIONAL_CONSTRUCTORS_DELETED(ISharedFactoryWithParam);
         ISharedFactoryWithParam() = default;
         virtual ~ISharedFactoryWithParam() = default;
 

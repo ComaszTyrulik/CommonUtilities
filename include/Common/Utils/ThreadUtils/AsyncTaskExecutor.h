@@ -17,6 +17,15 @@ namespace CT_COMMON_NAMESPACE
     public:
         /**
          * @brief Initializes executor.
+         * The perTastAction must have the following format perTaskAction(std::size_t firstIndex, std::size_t lastIndex)
+         * where given values define inclusive range of indices to handle by each task:
+         * @code [](std::size_t firstIndex, std::size_t lastIndex) {
+         *  for (std::size_t index = firstIndex; index <= lastIndex; ++index)
+         *  {
+         *      // Do something with index
+         *  }
+         * }
+         *
          * 
          * @param numberOfElementsToProcess - Total number of elements to process. Those will be divided into async tasks
          * @param perTaskAction - A function to be executed for each async task

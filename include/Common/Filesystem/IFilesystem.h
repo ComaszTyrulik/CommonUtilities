@@ -42,13 +42,14 @@ namespace CT_COMMON_NAMESPACE
         [[nodiscard]] virtual bool FileExists(const FilesystemPath& filePath) const = 0;
 
         /**
-         * @brief Creates file under given filePath containing passed fileContent.
+         * @brief Creates file under given filePath.
+         * If fileContent is provided, it is saved as the new file's content. Otherwise, an empty file is created.
          * Throws exception if file already exists or cannot be created.
          * 
          * @param filePath
          * @param fileContent
          */
-        virtual void CreateFile(const FilesystemPath& filePath, std::string_view fileContent) const = 0;
+        virtual void CreateFile(const FilesystemPath& filePath, std::string_view fileContent = "") const = 0;
 
         /**
          * @brief Updates file under given filePath containing passed fileContent.
@@ -68,8 +69,8 @@ namespace CT_COMMON_NAMESPACE
         virtual void DeleteFile(const FilesystemPath& filePath) const = 0;
 
         /**
-         * @brief Reads contents of the file under given filePath and returns it as string.
-         * Throws exception if file does not exists or cannot be opened.
+         * @brief Reads content of the file under given filePath and returns it as string.
+         * Throws exception if file does not exist or cannot be opened.
          * 
          * @param filePath
          * @return 

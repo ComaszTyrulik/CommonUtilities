@@ -34,4 +34,19 @@ namespace CT_COMMON_NAMESPACE::tests::unit
 
         ASSERT_EQ(0, actualCount);
     }
+
+    TEST_F(AsyncTaskExecutorTest, ExecuteWillRunGivenLambdaFunctionNoMoreThanNumberOfElements)
+    {
+        std::size_t numberOfElements = 100;
+
+        std::atomic_size_t actualCount = 0;
+        const auto function = [&](std::size_t firstIndex, std::size_t endIndex) {
+            actualCount++;
+        };
+
+        AsyncTaskExecutor sut(numberOfElements, function);
+        sut.Execute();
+
+        ASSERT_TRUE(actualCount <= numberOfElements);
+    }
 } // namespace sce::tests::unit

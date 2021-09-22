@@ -4,6 +4,9 @@
 
 namespace CT_COMMON_NAMESPACE
 {
+    /**
+     * @brief Interface providing generation of the universally unique identifiers (UUIDs) in the form of an integer.
+     */
     class IUuIdGenerator
     {
     public:
@@ -12,7 +15,7 @@ namespace CT_COMMON_NAMESPACE
         virtual ~IUuIdGenerator() = default;
 
         /**
-         * Generates universally unique identifier.
+         * @brief Generates universally unique identifier.
          * 
          * @return New, unique Id
          */
