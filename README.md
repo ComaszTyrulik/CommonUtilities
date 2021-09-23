@@ -54,10 +54,10 @@ It consists of:
  - Filesystem utilities which allow to:
 	 + Create/Delete/Read/Update files
 	 + Create/Delete/Read directories
- - [`UUID`]() generators
+ - UUID generators
  - Hashing utilities
  - Time utilities
- - Other useful functionalities such as simplified [`std::foreach`](), converting enums back/forth from/to their underlying types, and others
+ - Other useful functionalities such as simplified `std::foreach`, converting enums back/forth from/to their underlying types, and others
 
 This list is not definitive and will most likely be expanded in the future.
 ### Built With
@@ -157,7 +157,7 @@ target_link_libraries(
 
 
 ### Building library on your own
-There are two ways to build the library on your own. CommonUtilities is based on the [`BasicCppSetup`]() which describes building process. You can find it [here]().
+There are two ways to build the library on your own. CommonUtilities is based on the [`BasicCppSetup`](https://github.com/ComaszTyrulik/BasicCppSetup) which describes building process. You can find it [here]().
 
 If however, you don't want to use the building scripts provided by the library, you are going to need:
 
