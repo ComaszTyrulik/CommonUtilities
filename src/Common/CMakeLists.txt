@@ -37,7 +37,7 @@ target_compile_features(${LIB_TARGET_NAME} PUBLIC cxx_std_17)
 target_link_libraries(
 	${LIB_TARGET_NAME}
     PUBLIC
-        ${CT_XXHASH_VENDOR}
+        ${CT_VENDOR_XXHASH}
 		CONAN_PKG::fmt
 	PRIVATE
         CONAN_PKG::stduuid

@@ -1,4 +1,4 @@
-if (NOT DEFINED CT_XXHASH_VENDOR)
+if (NOT DEFINED CT_VENDOR_XXHASH)
     add_subdirectory(XxHash)
-    set(CT_XXHASH_VENDOR CT::vendor_xxhash PARENT_SCOPE)
+    set(CT_VENDOR_XXHASH CT::vendor_xxhash PARENT_SCOPE)
 endif()
