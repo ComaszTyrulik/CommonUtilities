@@ -4,45 +4,34 @@ conan:
 targets:
   lib:
     tests: false
-    namespace: cps
+    namespace: CT_COMMON_NAMESPACE
     headers:
-      base_dir: include/Lib
-      cmake_variable_file: src/Lib/CMakeLists.txt
+      base_dir: include/Common
+      cmake_variable_file: src/Common/CMakeLists.txt
       cmake_variable_name: LIB_HEADERS_LIST
     sources:
-      base_dir: src/Lib
-      cmake_variable_file: src/Lib/CMakeLists.txt
+      base_dir: src/Common
+      cmake_variable_file: src/Common/CMakeLists.txt
       cmake_variable_name: LIB_SRC_LIST
-  app:
-    tests: false
-    namespace: cps
-    headers:
-      base_dir: include/App
-      cmake_variable_file: src/App/CMakeLists.txt
-      cmake_variable_name: APP_HEADERS_LIST
-    sources:
-      base_dir: src/App
-      cmake_variable_file: src/App/CMakeLists.txt
-      cmake_variable_name: APP_SRC_LIST
   lib_units:
     tests: true
-    namespace: cps::tests::unit
+    namespace: CT_COMMON_NAMESPACE::tests::unit
     headers:
-      base_dir: tests/Lib/Unit
-      cmake_variable_file: tests/Lib/Unit/CMakeLists.txt
+      base_dir: tests/Common/Unit
+      cmake_variable_file: tests/Common/Unit/CMakeLists.txt
       cmake_variable_name: LIB_TESTS_UNIT_HEADERS_LIST
     sources:
-      base_dir: tests/Lib/Unit
-      cmake_variable_file: tests/Lib/Unit/CMakeLists.txt
+      base_dir: tests/Common/Unit
+      cmake_variable_file: tests/Common/Unit/CMakeLists.txt
       cmake_variable_name: LIB_TESTS_UNIT_SRC_LIST
   lib_integration:
     tests: true
-    namespace: cps::tests::integration
+    namespace: CT_COMMON_NAMESPACE::tests::integration
     headers:
-      base_dir: tests/Lib/Integration
-      cmake_variable_file: tests/Lib/Integration/CMakeLists.txt
+      base_dir: tests/Common/Integration
+      cmake_variable_file: tests/Common/Integration/CMakeLists.txt
       cmake_variable_name: LIB_TESTS_INTEGRATION_HEADERS_LIST
     sources:
-      base_dir: tests/Lib/Integration
-      cmake_variable_file: tests/Lib/Integration/CMakeLists.txt
+      base_dir: tests/Common/Integration
+      cmake_variable_file: tests/Common/Integration/CMakeLists.txt
       cmake_variable_name: LIB_TESTS_INTEGRATION_SRC_LIST

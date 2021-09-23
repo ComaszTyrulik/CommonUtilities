@@ -1,0 +1,5 @@
+#pragma once
+
+#ifndef CT_COMMON_NAMESPACE
+    #define CT_COMMON_NAMESPACE @CT_COMMON_NAMESPACE@
+#endif

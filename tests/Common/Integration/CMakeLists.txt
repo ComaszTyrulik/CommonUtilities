@@ -1,6 +1,6 @@
 include("${PROJECT_CONFIG_PATH}/Lib/config.cmake")
 
-set(LIB_TESTS_INTEGRATION_TARGET_NAME LIBIntegrationTests)
+set(LIB_TESTS_INTEGRATION_TARGET_NAME COMMONIntegrationTests)
 
 set(LIB_TESTS_INTEGRATION_INCLUDE_DIR "${${PROJECT_MAIN_NAME}_SOURCE_DIR}/tests/${LIB_TARGET_NAME}/Integration")
 set(LIB_TESTS_INTEGRATION_SRC_DIR "${${PROJECT_MAIN_NAME}_SOURCE_DIR}/tests/${LIB_TARGET_NAME}/Integration")
@@ -11,10 +11,13 @@ set(LIB_TESTS_INTEGRATION_SRC_PREFIX "${LIB_TESTS_INTEGRATION_SRC_DIR}/")
 
 set(
 	LIB_TESTS_INTEGRATION_HEADERS_LIST
+	"Filesystem/FilesystemTest.h"
+	"Filesystem/FilesystemTestCase.h"
 )
 
 set(
 	LIB_TESTS_INTEGRATION_SRC_LIST
+	"Filesystem/FilesystemTest.cpp"
 	"main.cpp"
 )
 
@@ -28,10 +31,7 @@ target_link_libraries(
 	${LIB_TESTS_INTEGRATION_TARGET_NAME}
 	PRIVATE
 		CONAN_PKG::gtest
-		CONAN_PKG::stduuid
-		CONAN_PKG::spdlog
-		CPS::lib
-		CPS::vendor_xxhash
+		CT::common_utils
 )
 
 # Group files into proper folders - for IDE
