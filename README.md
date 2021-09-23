@@ -184,9 +184,9 @@ cmake -S . -B build
 
 # If you want to build library for every config, you have to run
 # the command once for each config
-cmake --build build --config=[Debug/Release/RelWithDebInfo/MinSizeRel]
+cmake --build build --config [Debug/Release/RelWithDebInfo/MinSizeRel]
 ```
-This will build library into the `build/bin/[Debug/Release/RelWithDebInfo/MinSizeRel]` directory.
+This will build library into the `build/lib/[Debug/Release/RelWithDebInfo/MinSizeRel]` directory.
 
 In Visual Studio, go to `Tools > Options > Text Editor > C/C++ > Code Style > Formatting > General` (You can also search for the `clang` option in the options search bar) and check the `Enable ClangFormat support` option as well as the `Run ClangFormat for all formatting scenarios` option. This will tell Visual Studio to automatically format the code according to the provided `.clang-format` file. You can also manually trigger the code formating by pressing the `Ctrl + K + D`.
 
