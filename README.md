@@ -22,10 +22,8 @@
 			<a href="#about-the-project">About The Project</a>
 			<ul>
 				<li><a href="#built-with">Built With</a></li>
+				<li><a href="#supported-platforms">Supported Platforms</li>
 			</ul>
-		</li>
-		<li>
-			<a href="#supported-platforms">Supported Platforms
 		</li>
 		<li>
 			<a href="#getting-started">Getting Started</a>
@@ -103,6 +101,7 @@ set(CT_VENDOR_XXHASH xxHash::xxhash)
  
 Instead of typing:
 
+
 ```C++
 #include <Common/Types.h>
 
@@ -157,11 +156,10 @@ target_link_libraries(
 
 
 ### Building library on your own
-There are two ways to build the library on your own. CommonUtilities is based on the [`BasicCppSetup`](https://github.com/ComaszTyrulik/BasicCppSetup) which describes building process. You can find it [here]().
+There are two ways to build the library on your own. CommonUtilities is based on the [`BasicCppSetup`](https://github.com/ComaszTyrulik/BasicCppSetup) which describes building process. You can find it [here](https://github.com/ComaszTyrulik/BasicCppSetup#installation).
 
 If however, you don't want to use the building scripts provided by the library, you are going to need:
 
-### Prerequisites
 #### [CMake](https://cmake.org/)
 Minimum required version is `3.16`.
 Make sure to add CMake to your `PATH`
@@ -171,7 +169,7 @@ Minimum required version is `1.37.2`.
 Make sure to add Conan to your `PATH`.
 
 #### Building
-Once you have all the prerequisites installed, go to the directory where you cloned the `CommonUtilities` to and run:
+Once you have all the prerequisites installed, go to the directory where you cloned the `CommonUtilities` and run:
 
 ```sh
 git submodule update --init --recursive
@@ -191,7 +189,7 @@ This will build library into the `build/lib/[Debug/Release/RelWithDebInfo/MinSiz
 In Visual Studio, go to `Tools > Options > Text Editor > C/C++ > Code Style > Formatting > General` (You can also search for the `clang` option in the options search bar) and check the `Enable ClangFormat support` option as well as the `Run ClangFormat for all formatting scenarios` option. This will tell Visual Studio to automatically format the code according to the provided `.clang-format` file. You can also manually trigger the code formating by pressing the `Ctrl + K + D`.
 
 ## Usage
-Once you include the library to your project, just include `<Common/*RequiredFile*>` and you're good to go.
+Once you add the library to your project, just include `<Common/*RequiredFile*>` and you're good to go.
 
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.
