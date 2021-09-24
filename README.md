@@ -186,8 +186,6 @@ cmake --build build --config [Debug/Release/RelWithDebInfo/MinSizeRel]
 ```
 This will build library into the `build/lib/[Debug/Release/RelWithDebInfo/MinSizeRel]` directory.
 
-In Visual Studio, go to `Tools > Options > Text Editor > C/C++ > Code Style > Formatting > General` (You can also search for the `clang` option in the options search bar) and check the `Enable ClangFormat support` option as well as the `Run ClangFormat for all formatting scenarios` option. This will tell Visual Studio to automatically format the code according to the provided `.clang-format` file. You can also manually trigger the code formating by pressing the `Ctrl + K + D`.
-
 ## Usage
 Once you add the library to your project, just include `<Common/*RequiredFile*>` and you're good to go.
 
